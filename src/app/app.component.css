@@ -1,0 +1,37 @@
+.container {
+  font-size: 10px;
+  font-family: Ubuntu, sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+input, textarea {
+  width: 50rem;
+  height: 10rem;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+span {
+  font-size: 1.4rem;
+}
+
+.pasado, .limite, .ok {
+  padding: 1rem;
+}
+
+.pasado {
+  color: white;
+  background-color: rgb(201, 72, 72);
+}
+
+.limite {
+  background-color: rgb(156, 156, 7);
+}
+
+.ok {
+  color: white;
+  background-color: green;
+}

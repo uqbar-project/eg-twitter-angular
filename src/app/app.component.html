@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<div class="container">
+  <h1>Ejemplo Binding Twitter - Angular</h1>
+  <form name="form" class="form">
+    <div>
+      <textarea id="texto" name="texto" placeholder="¿Qué estás pensando?" [(ngModel)]="twitter.texto"></textarea>
+    </div>
+    <div>
+      <span class="{{espacioRestanteClass()}}">
+        {{twitter.cantidadLetrasRestantes}}
+      </span>
+    </div>
+  </form>
+</div>
