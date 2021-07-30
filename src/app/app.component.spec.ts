@@ -2,6 +2,8 @@ import { waitForAsync, TestBed, ComponentFixture } from '@angular/core/testing'
 
 import { AppComponent } from './app.component'
 
+import './app.module'
+
 let fixture: ComponentFixture<AppComponent>
 
 describe('AppComponent', () => {
