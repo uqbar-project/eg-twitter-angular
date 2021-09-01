@@ -1,50 +1,50 @@
-import { waitForAsync, TestBed, ComponentFixture } from '@angular/core/testing'
+import './app.module'
+
+import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing'
 
 import { AppComponent } from './app.component'
 
-import './app.module'
-
-let fixture: ComponentFixture<AppComponent>
+let appComponent: ComponentFixture<AppComponent>
 
 describe('AppComponent', () => {
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      providers: [
+        { provide: ComponentFixtureAutoDetect, useValue: true }
+      ]
     }).compileComponents()
-    fixture = TestBed.createComponent(AppComponent)
-    fixture.detectChanges()
-  }))
+    appComponent = TestBed.createComponent(AppComponent)
+  })
 
-  it('should decrease letters - greater than 0', waitForAsync(() => {
+  it('should decrease letters - greater than 0', () => {
     twittear('En todos lados se cuecen habas')
-    fixture.detectChanges()
-    fixture.whenStable().then(() => {
-      expect(buscarElemento('restantes').textContent).toContain('110')
-    })
-  }))
+    appComponent.detectChanges()
+    expect(buscarElemento('restantes')?.textContent?.trim()).toBe('110')
+  })
 
-  it('should decrease letters - exactly 0', waitForAsync(() => {
+  it('should decrease letters - exactly 0', () => {
     twittear('12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890')
-    fixture.detectChanges()
-    fixture.whenStable().then(() => {
-      expect(buscarElemento('restantes').textContent).toContain('0')
-      expect(fixture.componentInstance.twitter.excedido).toBeTruthy()
-    })
-  }))
+    // Dispara el data binding de Angular
+    appComponent.detectChanges()
+    expect(buscarElemento('restantes')?.textContent?.trim()).toBe('0')
+    expect(appComponent.componentInstance.twitter.excedido).toBeTruthy()
+  })
 
   /* Función auxiliar que permite buscar un elemento por data-testid */
-  function buscarElemento(testId: string) {
-    const compiled = fixture.debugElement.nativeElement
+  function buscarElemento(testId: string): HTMLInputElement {
+    const compiled = appComponent.debugElement.nativeElement
     return compiled.querySelector(`[data-testid="${testId}"]`)
   }
 
   function twittear(tweet: string) {
-    const twitter = fixture.componentInstance.twitter
-    twitter.texto = tweet
     const inputTexto = buscarElemento('texto')
-    inputTexto.value = twitter.texto    
-    return twitter
+    inputTexto.value = tweet
+    // Necesario para que funcione
+    appComponent.componentInstance.twitter.texto = tweet
+    //
+    inputTexto.dispatchEvent(new Event('input'))
   }
 })
