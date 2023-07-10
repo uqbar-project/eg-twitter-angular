@@ -1,8 +1,9 @@
-import './app.module'
 
 import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing'
 
 import { AppComponent } from './app.component'
+import './app.module'
+import { FormsModule } from '@angular/forms'
 
 let appComponent: ComponentFixture<AppComponent>
 
@@ -11,6 +12,9 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
+      ],
+      imports: [
+        FormsModule,
       ],
       providers: [
         { provide: ComponentFixtureAutoDetect, useValue: true }
