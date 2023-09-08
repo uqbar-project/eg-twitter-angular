@@ -34,7 +34,7 @@ describe('AppComponent', () => {
     // Dispara el data binding de Angular
     appComponent.detectChanges()
     expect(buscarElemento('restantes')?.textContent?.trim()).toBe('0')
-    expect(appComponent.componentInstance.twitter.excedido).toBeTruthy()
+    expect(appComponent.componentInstance.tweet.excedido).toBeTruthy()
   })
 
   /* Función auxiliar que permite buscar un elemento por data-testid */
@@ -47,7 +47,7 @@ describe('AppComponent', () => {
     const inputTexto = buscarElemento('texto')
     inputTexto.value = tweet
     // Necesario para que funcione
-    appComponent.componentInstance.twitter.texto = tweet
+    appComponent.componentInstance.tweet.texto = tweet
     //
     inputTexto.dispatchEvent(new Event('input'))
   }

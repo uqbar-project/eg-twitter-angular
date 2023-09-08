@@ -10,27 +10,27 @@ type ClaseEspacioRestante = 'pasado' | 'limite' | 'ok'
 
 export class AppComponent {
   title = 'ejemplos-binding-angular'
-  twitter = new Twitter('')
+  tweet = new Tweet('')
 
   espacioRestanteClass(): ClaseEspacioRestante {
-    if (this.twitter.excedido()) {
+    if (this.tweet.excedido()) {
       return 'pasado'
     }
-    if (this.twitter.proximoAExcederse()) {
+    if (this.tweet.proximoAExcederse()) {
       return 'limite'
     }
     return 'ok'
   }
 }
 
-const MAXIMA_LONGITUD_TWITTER = 140
-const DELTA_LONGITUD_MINIMA = 5
+const MAXIMA_LONGITUD_TWEET = 140
+const DELTA_LONGITUD_MINIMA_TWEET = 5
 
-class Twitter {
+class Tweet {
   constructor(public texto = '') { }
 
   get cantidadLetrasRestantes() {
-    return MAXIMA_LONGITUD_TWITTER - this.texto.length
+    return MAXIMA_LONGITUD_TWEET - this.texto.length
   }
 
   excedido() {
@@ -38,6 +38,6 @@ class Twitter {
   }
 
   proximoAExcederse() {
-    return this.cantidadLetrasRestantes <= DELTA_LONGITUD_MINIMA
+    return this.cantidadLetrasRestantes <= DELTA_LONGITUD_MINIMA_TWEET
   }
 }
