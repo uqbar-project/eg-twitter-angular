@@ -27,7 +27,8 @@ En la variante con template tenemos
 - podríamos tener asociada en la vista el evento `(input)` contra este writable signal, pero eso excluye ciertos eventos que no se disparan, como cuando pegamos texto del portapapeles, o cuando queremos presionar el botón Delete o Backspace. Entonces lo que hacemos en la vista es 1. tener bindeado el valor del textarea contra la propiedad `tweet` del componente ts, 2. disparar una actualización de la signal con cada tecla que se presiona
 
 ```html
-<textarea id="texto" name="texto" data-testid="texto" placeholder="¿Qué estás pensando?" [(ngModel)]="tweet" (input)="actualizarTweet()"></textarea>
+<textarea id="texto" name="texto" data-testid="texto" placeholder="¿Qué estás pensando?" 
+          [(ngModel)]="tweet" (input)="actualizarTweet()"></textarea>
 ```
 
 ```ts
