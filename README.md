@@ -1,6 +1,6 @@
 # Twitter en Angular
 
-[![Build](https://github.com/uqbar-project/eg-twitter-angular/actions/workflows/build.yml/badge.svg)](https://github.com/uqbar-project/eg-twitter-angular/actions/workflows/build.yml) ![Coverage](./badges/eg-twitter-angular/coverage.svg)
+[![Build](https://github.com/uqbar-project/eg-twitter-angular/actions/workflows/build.yml/badge.svg)](https://github.com/uqbar-project/eg-twitter-angular/actions/workflows/build.yml) [![codecov](https://codecov.io/gh/uqbar-project/eg-twitter-angular/graph/badge.svg?token=AA4KFKI9OM)](https://codecov.io/gh/uqbar-project/eg-twitter-angular)
 
 El ejemplo muestra cómo podría funcionar una página de Twitter.
 
@@ -34,6 +34,7 @@ En la variante con template tenemos
 actualizarTweet() {
   this.texto.set(this.tweet)
 }
+```
 
 - tener un objeto Tweet es engorroso porque si bien podemos delegar muchas de las preguntas, el mecanismo de **computed signals** no funciona si explícitamente no hacemos una llamada a la writable signal. Por ejemplo si nosotros escribimos
 

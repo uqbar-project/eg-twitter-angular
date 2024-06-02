@@ -14,9 +14,13 @@ describe('TwitterTemplateComponent', () => {
     fixture.detectChanges()
   })
 
+  it('should initially have normal limit and empty string', () => {
+    expect(buscarElemento('restantes')?.textContent?.trim()).toBe('140')
+    expect(fixture.componentInstance.tweet.texto).toBe('')
+  })
+  
   it('should decrease letters - greater than 0', () => {
     twittear('En todos lados se cuecen habas')
-    fixture.detectChanges()
     expect(buscarElemento('restantes')?.textContent?.trim()).toBe('110')
     expect(buscarElemento('restantes')?.classList).toContain('ok')
   })
@@ -25,11 +29,17 @@ describe('TwitterTemplateComponent', () => {
     twittear(
       '1234567890'.repeat(14)
     )
-    // Dispara el data binding de Angular
-    fixture.detectChanges()
     expect(buscarElemento('restantes')?.textContent?.trim()).toBe('0')
     expect(buscarElemento('restantes')?.classList).toContain('pasado')
     expect(fixture.componentInstance.tweet.excedido).toBeTruthy()
+  })
+
+  it('should decrease letters - close to exceeded', () => {
+    twittear(
+      '1234567890'.repeat(13).concat('111111')
+    )
+    expect(buscarElemento('restantes')?.textContent?.trim()).toBe('4')
+    expect(buscarElemento('restantes')?.classList).toContain('limite')
   })
 
   /* Función auxiliar que permite buscar un elemento por data-testid */
@@ -42,5 +52,7 @@ describe('TwitterTemplateComponent', () => {
     const inputTexto = buscarElemento('texto')
     inputTexto.value = tweet
     inputTexto.dispatchEvent(new Event('input'))
+    // Dispara el data binding de Angular
+    fixture.detectChanges()
   }
 })
