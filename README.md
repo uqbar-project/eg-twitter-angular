@@ -15,6 +15,8 @@ Ejercicio extraído de la [guía de binding](https://algo3.uqbar-project.org/gua
 
 ## Variante con template
 
+La URL es `http://localhost:4200`
+
 En la variante con template tenemos 
 
 - un objeto que representa el tweet como **modelo de dominio**. Sabe decirnos cuál es la cantidad de caracteres restantes y si el tweet está excedido o próximo a excederse, pero no conoce la clase css que vamos a utilizar
@@ -22,6 +24,8 @@ En la variante con template tenemos
 - la vista mantiene un binding bidireccional contra la propiedad `texto` del `tweet` y además utiliza propiedades calculadas para mostrar los caracteres restantes y el color que le corresponde.
 
 ## Variante con signals
+
+La URL es `http://localhost:4200/signals`
 
 - queremos tener un **writable signal texto** que representa el texto del tweet. 
 - podríamos tener asociada en la vista el evento `(input)` contra este writable signal, pero eso excluye ciertos eventos que no se disparan, como cuando pegamos texto del portapapeles, o cuando queremos presionar el botón Delete o Backspace. Entonces lo que hacemos en la vista es 1. tener bindeado el valor del textarea contra la propiedad `tweet` del componente ts, 2. disparar una actualización de la signal con cada tecla que se presiona
