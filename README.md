@@ -45,6 +45,14 @@ cantidadLetrasRestantes = computed<number>(
 )
 ```
 
-donde tweet es un objeto de la clase Tweet, cuando nosotros disparamos un cambio del signal `texto` Angular no recalcula el valor para el computed `cantidadCaracteresRestantes`
+donde tweet es un objeto de la clase Tweet, cuando nosotros disparamos un cambio del signal `texto` Angular no recalcula el valor para el computed `cantidadCaracteresRestantes`. En cambio eso sí pasa si hacemos
+
+```ts
+cantidadLetrasRestantes = computed<number>(
+  () => MAXIMA_LONGITUD_TWEET - this.texto().length
+)
+```
+
+(la clave es hacer la llamada al signal: `this.texto()`)
 
 - como consecuencia de eso el modelo de la vista toma más responsabilidades. Podríamos generar un Tweet inmutable, de manera que cada vez que escribamos se genere un nuevo objeto Tweet con un texto distinto, pero por el momento no necesitamos tener ese nivel de complejidad para un solo input.
