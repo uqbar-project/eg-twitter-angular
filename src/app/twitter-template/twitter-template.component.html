@@ -9,7 +9,7 @@
       [(ngModel)]="tweet.texto"></textarea>
     <div class="footer">
       <span class="hint">Caracteres restantes</span>
-      <span data-testid="restantes" class="badge {{espacioRestanteClass()}}">
+      <span data-testid="restantes" class="badge" [class]="espacioRestanteClass()">
         {{tweet.cantidadLetrasRestantes}}
       </span>
     </div>

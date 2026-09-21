@@ -40,6 +40,14 @@ describe('TwitterSignalsComponent', () => {
     expect(buscarElemento('restantes')?.classList).toContain('limite')
   })
 
+  it('should show limite with exactly 5 remaining', () => {
+    twittear(
+      '1234567890'.repeat(13).concat('12345')
+    )
+    expect(buscarElemento('restantes')?.textContent?.trim()).toBe('5')
+    expect(buscarElemento('restantes')?.classList).toContain('limite')
+  })
+
   /* Función auxiliar que permite buscar un elemento por data-testid */
   function buscarElemento(testId: string): HTMLInputElement {
     const compiled = fixture.debugElement.nativeElement

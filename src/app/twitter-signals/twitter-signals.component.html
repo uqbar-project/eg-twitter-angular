@@ -6,11 +6,11 @@
       name="texto"
       data-testid="texto"
       placeholder="¿Qué estás pensando?"
-      [(ngModel)]="tweet"
-      (input)="actualizarTweet()"></textarea>
+      [ngModel]="texto()"
+      (ngModelChange)="texto.set($event)"></textarea>
     <div class="footer">
       <span class="hint">Caracteres restantes</span>
-      <span data-testid="restantes" class="badge {{espacioRestanteClass()}}">
+      <span data-testid="restantes" class="badge" [class]="espacioRestanteClass()">
         {{cantidadLetrasRestantes()}}
       </span>
     </div>

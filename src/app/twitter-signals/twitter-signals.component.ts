@@ -10,12 +10,6 @@ import { FormsModule } from '@angular/forms'
 })
 export class TwitterSignalsComponent {
   texto = signal<string>('')
-  tweet = ''
-
-  // Este método lo necesitamos para poder disparar los cambios
-  actualizarTweet() {
-    this.texto.set(this.tweet)
-  }
 
   cantidadLetrasRestantes = computed<number>(
     () => MAXIMA_LONGITUD_TWEET - this.texto().length
@@ -26,7 +20,7 @@ export class TwitterSignalsComponent {
     if (cantidadRestante <= 0) {
       return 'pasado'
     }
-    if (cantidadRestante < DELTA_LONGITUD_MINIMA_TWEET) {
+    if (cantidadRestante <= DELTA_LONGITUD_MINIMA_TWEET) {
       return 'limite'
     }
     return 'ok'
