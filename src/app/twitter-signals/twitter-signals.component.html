@@ -1,10 +1,15 @@
 <article class="container">
   <h1>Twitter - Signals</h1>
   <form name="form" class="form">
-    <div>
-      <textarea id="texto" name="texto" data-testid="texto" placeholder="¿Qué estás pensando?" [(ngModel)]="tweet" (input)="actualizarTweet()"></textarea>
-    </div>
-    <div>
+    <textarea
+      id="texto"
+      name="texto"
+      data-testid="texto"
+      placeholder="¿Qué estás pensando?"
+      [(ngModel)]="tweet"
+      (input)="actualizarTweet()"></textarea>
+    <div class="footer">
+      <span class="hint">Caracteres restantes</span>
       <span data-testid="restantes" class="badge {{espacioRestanteClass()}}">
         {{cantidadLetrasRestantes()}}
       </span>

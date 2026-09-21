@@ -1,6 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
-* {
-  font-size: 12px;
-  font-family: Inter, sans-serif;
+:root {
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --border: #e3e8ee;
+  --text: #0f1419;
+  --muted: #536471;
+  --accent: #1d9bf0;
+  --accent-soft: #e6f3fd;
+  --ok: #1a9e5c;
+  --limite: #f4a100;
+  --pasado: #e0245e;
+}
+
+body {
+  margin: 0;
+  font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(1200px 600px at 100% -10%, var(--accent-soft), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, #fdf1e6, transparent 55%),
+    var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+::selection {
+  background: var(--accent-soft);
 }
